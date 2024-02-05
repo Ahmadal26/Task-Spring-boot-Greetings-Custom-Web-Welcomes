@@ -7,18 +7,19 @@ import org.springframework.web.bind.annotation.*;
 public class TaskController {
 
     @GetMapping("/sayHi")
-    public String sayHi(){
+    public String sayHi() {
         return "Welcome Ahmad";
     }
 
-    @GetMapping ("/greet")
+    @GetMapping("/greet")
 
-    public String showName(@RequestParam String name ){
-        return "Hello: " +name;
+    public String showName(@RequestParam String name) {
+        return "Hello: " + name;
     }
-    @PostMapping ("/farewell")
 
-    public String byeName(@RequestBody CreateFarewellRequest createFarewellRequest){
+    @PostMapping("/farewell")
+
+    public String byeName(@RequestBody CreateFarewellRequest createFarewellRequest) {
 
         return "Goodbye " + createFarewellRequest.getName();
     }
