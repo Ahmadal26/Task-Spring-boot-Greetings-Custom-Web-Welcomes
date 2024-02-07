@@ -34,9 +34,13 @@ public class UserServiceImpl implements UserService {
 
     }
 
+
+
     @Override
-    public void updateUserStatus(UpdateUserRequest updateUserRequest) {
-        UserEntity userEntity = userRepository.findById(updateUserRequest.getUserId()).orElseThrow();
+    public void updateUserStatus(Long userId, UpdateUserRequest updateUserRequest) {
+        UserEntity userEntity = userRepository.findById(userId).orElseThrow();
+        if(!updateUserRequest.getStatus().equals("ACTIVE")&&  !updateUserRequest.getStatus().equals("INACTIVE"))
+            throw new IllegalArgumentException("The status should be ACTIVE or INACTIVE");
         userEntity.setStatus(Status.valueOf(updateUserRequest.getStatus()));
         userRepository.save(userEntity);
     }

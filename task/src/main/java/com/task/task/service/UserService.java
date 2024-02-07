@@ -8,6 +8,17 @@ import java.awt.image.VolatileImage;
 public interface UserService  {
         void saveUser(CreateUserRequest createUserRequest);
         void updateUser(UpdateUserRequest updateUserRequest);
+        void updateUserStatus(Long userId, UpdateUserRequest updateUserRequest);
 
-        void updateUserStatus(UpdateUserRequest updateUserRequest);
+
+
+
+
 }
+
+
+
+
+
+
+
