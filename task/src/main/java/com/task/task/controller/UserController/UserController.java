@@ -2,9 +2,12 @@ package com.task.task.controller.UserController;
 
 import com.task.task.bo.user.CreateUserRequest;
 import com.task.task.bo.user.UpdateUserRequest;
-import com.task.task.service.UserService;
+import com.task.task.entity.UserEntity;
+import com.task.task.service.User.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -40,5 +43,9 @@ try {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
         return ResponseEntity.ok("User Updated successfully");
+    }
+    @GetMapping("/user-list")
+    public List<UserEntity> getAllUsers(){
+        return userService.allUsers();
     }
 }
