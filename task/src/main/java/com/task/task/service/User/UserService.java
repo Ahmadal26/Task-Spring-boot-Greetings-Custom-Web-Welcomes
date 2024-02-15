@@ -16,6 +16,8 @@ public interface UserService {
         void updateUserStatus(Long userID, UpdateUserRequest updateUserRequest);
 
         List<UserEntity> allUsers();
+
+    List<String> getAllUsersWithStrongPassword();
 }
 
 

@@ -1,7 +1,6 @@
 package com.task.task.service.suggestion;
 
 
-
 import com.task.task.bo.suggestion.CreateSuggestionRequest;
 import com.task.task.entity.GuestSuggestionEntity;
 import com.task.task.repository.GuestRepository;
@@ -27,10 +26,9 @@ public class SuggestionsServiceImpl implements SuggestionsService{
             GuestSuggestionEntity guestEntity = new GuestSuggestionEntity();
             guestEntity.setSuggestionText(suggestion.getSuggestionText());
             guestEntity.setRate(suggestion.getRate());
-            guestEntity.setStatus(SuggestionStatus.valueOf(suggestion.getSuggestionText().toUpperCase()));
+            guestEntity.setStatus(SuggestionStatus.valueOf(suggestion.getStatus().toUpperCase()));
             guestRepository.save(guestEntity);
         };
-        function.processSuggestion(createSuggestionRequest);
     }
 
     @Override
@@ -41,5 +39,6 @@ public class SuggestionsServiceImpl implements SuggestionsService{
                 .collect(Collectors.toList());
         return suggestions;
     }
+
 
 }

@@ -50,4 +50,9 @@ public class UserServiceImpl implements UserService{
     public List<UserEntity> allUsers() {
         return null;
     }
+
+    @Override
+    public List<String> getAllUsersWithStrongPassword() {
+        return null;
+    }
 }

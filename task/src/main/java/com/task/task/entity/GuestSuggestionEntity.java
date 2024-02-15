@@ -6,11 +6,18 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "guest_suggestion")
-public class GuestSuggestionEntity{
+    public class GuestSuggestionEntity {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    public GuestSuggestionEntity( String suggestionText, long rate, SuggestionStatus status) {
+
+        this.suggestionText = suggestionText;
+        this.rate = rate;
+        this.status = status;
+    }
 
     private String suggestionText;
 
@@ -18,6 +25,11 @@ public class GuestSuggestionEntity{
 
     @Enumerated(EnumType.STRING)
     private SuggestionStatus status;
+
+    public GuestSuggestionEntity() {
+
+    }
+
 
     public SuggestionStatus getStatus() {
         return status;
