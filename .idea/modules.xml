@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/task.iml" filepath="$PROJECT_DIR$/.idea/task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Task-Spring-boot-Greetings-Custom-Web-Welcomes.iml" filepath="$PROJECT_DIR$/.idea/Task-Spring-boot-Greetings-Custom-Web-Welcomes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/task/task.iml" filepath="$PROJECT_DIR$/task/task.iml" />
     </modules>
   </component>
 </project>
