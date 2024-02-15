@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -67,6 +68,13 @@ class TaskApplicationTests {
         Mockito.when(guestRepository.findAllCreatedSuggestions()).thenReturn(Optional.of(suggestions));
 
         Assertions.assertEquals(Arrays.asList(new GuestSuggestionEntity("note3", 2, SuggestionStatus.CREATE), new GuestSuggestionEntity("note4", 3, SuggestionStatus.CREATE)), guestRepository.findAllCreatedSuggestions());
+    }
+    @Test
+    public void whenGetRemoveStatusSuggestions_thenSuccess(){
+        List<GuestSuggestionEntity> suggestions = Arrays.asList(new GuestSuggestionEntity("text", 5, SuggestionStatus.CREATE), new GuestSuggestionEntity("text", 5, SuggestionStatus.CREATE), new GuestSuggestionEntity("text", 5, SuggestionStatus.REMOVE), new GuestSuggestionEntity("text", 5, SuggestionStatus.REMOVE), new GuestSuggestionEntity("text", 5, SuggestionStatus.CREATE));
+        Mockito.when(guestRepository.findAll()).thenReturn(suggestions);
+
+        Assertions.assertEquals(Arrays.asList(new GuestSuggestionEntity("text", 5, SuggestionStatus.REMOVE).getStatus(), new GuestSuggestionEntity("text", 5, SuggestionStatus.REMOVE).getStatus()), suggestionsService.findSuggestions("REMOVE").stream().map(GuestSuggestionEntity::getStatus).collect(Collectors.toList()));
     }
 }
 

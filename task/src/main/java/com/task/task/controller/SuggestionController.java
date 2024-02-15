@@ -29,4 +29,5 @@ public class SuggestionController {
         return ResponseEntity.ok().body(suggestions);
     }
 
+
 }
