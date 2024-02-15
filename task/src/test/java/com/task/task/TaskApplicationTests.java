@@ -16,6 +16,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,7 +64,7 @@ class TaskApplicationTests {
     @Test
     public void whenGetCreateStatusSuggestions_thenSuccess() {
         List<GuestSuggestionEntity> suggestions = Arrays.asList(new GuestSuggestionEntity("note1", 10, SuggestionStatus.CREATE), new GuestSuggestionEntity("note2", 8, SuggestionStatus.CREATE) );
-        Mockito.when(guestRepository.findAllCreatedSuggestions());
+        Mockito.when(guestRepository.findAllCreatedSuggestions()).thenReturn(Optional.of(suggestions));
 
         Assertions.assertEquals(Arrays.asList(new GuestSuggestionEntity("note3", 2, SuggestionStatus.CREATE), new GuestSuggestionEntity("note4", 3, SuggestionStatus.CREATE)), guestRepository.findAllCreatedSuggestions());
     }
